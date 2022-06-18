@@ -44,7 +44,7 @@ class Sider:
             Sider: Instance of Sider with key-value removed
 
         NOTE: I could've used `del` to remove the value, though it's not all that functional
-        And the time complexity is same as `del` i.e O(n) -> https://wiki.python.org/moin/TimeComplexity
+        Compromise? Time complextiy becomes O(n) compared to O(1) of `del`
 
         """
         return Sider.from_dict({k: v for k, v in self._store.items() if k != key})

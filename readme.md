@@ -18,6 +18,7 @@ The main rationale behind using a functional core is to:
 ### Limitations
 
 - Limited to `str` <> `str` mapping
+- Some compromises had to be made to make the core functional (i.e unset)
 
 ## Resources
 
