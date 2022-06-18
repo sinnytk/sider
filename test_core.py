@@ -11,3 +11,9 @@ def test_sider_store_is_immutable():
     with pytest.raises(FrozenInstanceError):
         sider._store = {'2': 'b','o':'r', '2': 'b'}
 
+def test_sider_construction_with_existing_store():
+    old_store = {'2': 'b','o':'r', '2': 'b'}
+    sider = Sider.from_dict(old_store)
+    assert sider._store == old_store # value is same
+    assert sider._store is not old_store # reference is different
+
