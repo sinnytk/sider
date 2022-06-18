@@ -58,4 +58,6 @@ class Sider:
 
         Also to side-effects like ensuring old store is always _deep copied_
         """
+        assert isinstance(old_store, dict)
+
         return cls(_store=deepcopy(old_store))
