@@ -50,6 +50,18 @@ class Sider:
         """
         return Sider.from_dict({k: v for k, v in self._store.items() if k != key})
 
+    def value_count(self, value: str) -> int:
+        """Returns the number of entries mapped to `value`.
+
+        Args:
+            value (str): Value to search occurrences of
+
+        Returns:
+            int: Number of occurrences, 0 if none found
+        """
+
+        return len([k for k, v in self._store.items() if v == value])
+
     @classmethod
     def from_dict(cls, old_store: dict) -> "Sider":
         """Factory method to create a Sider from existing dict.

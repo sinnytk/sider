@@ -70,3 +70,10 @@ def test_sider_unset():
         .unset("marco2")
         == Sider()
     )
+
+
+def test_sider_value_count():
+    assert Sider.from_dict({"a": "1", "b": "1"}).value_count("1") == 2
+    assert Sider.from_dict({"a": "1", "b": "2"}).value_count("1") == 1
+    assert Sider.from_dict({"a": "1", "b": "2"}).value_count("3") == 0
+    assert Sider().value_count("3") == 0
