@@ -34,6 +34,21 @@ class Sider:
         """
         return Sider.from_dict(dict(self._store, **{key: value}))
 
+    def unset(self, key: str) -> "Sider":
+        """Returns a new `Sider` with key<>value pair removed
+
+        Args:
+            key (str): Key to remove
+
+        Returns:
+            Sider: Instance of Sider with key-value removed
+
+        NOTE: I could've used `del` to remove the value, though it's not all that functional
+        And the time complexity is same as `del` i.e O(n) -> https://wiki.python.org/moin/TimeComplexity
+
+        """
+        return Sider.from_dict({k: v for k, v in self._store.items() if k != key})
+
     @classmethod
     def from_dict(cls, old_store: dict) -> "Sider":
         """Factory method to create a Sider from existing dict.

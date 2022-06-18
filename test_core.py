@@ -44,3 +44,29 @@ def test_sider_set():
     assert Sider().set("marco", "polo").set("marco2", "polo2") == Sider.from_dict(
         {"marco": "polo", "marco2": "polo2"}
     )
+
+
+def test_sider_unset():
+    # unsetting all
+    assert Sider.from_dict({"marco": "polo"}).unset("marco") == Sider()
+
+    # unsetting one
+    assert Sider.from_dict({"marco": "polo", "marco2": "polo2"}).unset(
+        "marco"
+    ) == Sider.from_dict({"marco2": "polo2"})
+
+    # unsetting non-existing does nothing
+    assert Sider.from_dict({"marco": "polo", "marco2": "polo2"}).unset(
+        "marco3"
+    ) == Sider.from_dict({"marco": "polo", "marco2": "polo2"})
+
+    # unsetting on empty store
+    assert Sider().unset("marco") == Sider()
+
+    # chaining unsets work
+    assert (
+        Sider.from_dict({"marco": "polo", "marco2": "polo2"})
+        .unset("marco")
+        .unset("marco2")
+        == Sider()
+    )
