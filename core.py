@@ -22,6 +22,18 @@ class Sider:
         """
         return self._store.get(key)
 
+    def set(self, key: str, value: str) -> "Sider":
+        """Returns a new `Sider` with added/updated value.
+
+        Args:
+            key (str): Key to map against
+            value (str): Value to be mapped against key
+
+        Returns:
+            Sider: Instance of Sider with key-value added
+        """
+        return Sider.from_dict(dict(self._store, **{key: value}))
+
     @classmethod
     def from_dict(cls, old_store: dict) -> "Sider":
         """Factory method to create a Sider from existing dict.

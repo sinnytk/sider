@@ -29,3 +29,18 @@ def test_sider_get():
     Sider.from_dict(old_store).get("2") is "b"
     Sider.from_dict(old_store).get("o") is "r"
     Sider.from_dict(old_store).get("5") is None
+
+
+def test_sider_set():
+    # setting new value
+    assert Sider().set("marco", "polo") == Sider.from_dict({"marco": "polo"})
+
+    # updating existing value
+    assert Sider.from_dict({"marco": "polo"}).set("marco", "polo2") == Sider.from_dict(
+        {"marco": "polo2"}
+    )
+
+    # chaining works as it's functional
+    assert Sider().set("marco", "polo").set("marco2", "polo2") == Sider.from_dict(
+        {"marco": "polo", "marco2": "polo2"}
+    )
