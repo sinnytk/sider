@@ -6,4 +6,4 @@ from typing import Dict
 @dataclass(frozen=True)
 class Sider:
     """Immutable structure containing the store"""
-    store: Dict[str, str] = field(default_factory=dict) # key-value store
+    _store: Dict[str, str] = field(default_factory=dict) # underlying key-value store
