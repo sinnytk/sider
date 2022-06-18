@@ -24,3 +24,8 @@ def test_sider_equivalence():
     assert Sider.from_dict(old_store) == Sider.from_dict(old_store)
 
 
+def test_sider_get():
+    old_store = {"2": "b", "o": "r", "2": "b"}
+    Sider.from_dict(old_store).get("2") is "b"
+    Sider.from_dict(old_store).get("o") is "r"
+    Sider.from_dict(old_store).get("5") is None

@@ -2,12 +2,25 @@
 
 from copy import deepcopy
 from dataclasses import dataclass, field
-from typing import Dict
+from typing import Dict, Optional
+
 
 @dataclass(frozen=True)
 class Sider:
     """Immutable structure containing the store"""
-    _store: Dict[str, str] = field(default_factory=dict) # underlying key-value store
+
+    _store: Dict[str, str] = field(default_factory=dict)  # underlying key-value store
+
+    def get(self, key: str) -> Optional[str]:
+        """Returns the value of given key if it exists, null otherwise.
+
+        Args:
+            key (str): Key to query the store against
+
+        Returns:
+            Optional[str]: Value of key, null if not found
+        """
+        return self._store.get(key)
 
     @classmethod
     def from_dict(cls, old_store: dict) -> "Sider":
@@ -19,4 +32,3 @@ class Sider:
         Also to side-effects like ensuring old store is always _deep copied_
         """
         return cls(_store=deepcopy(old_store))
-    
