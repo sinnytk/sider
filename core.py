@@ -43,7 +43,8 @@ class Sider:
         Returns:
             Sider: Instance of Sider with key-value removed
 
-        NOTE: I could've used `del` to remove the value, though it's not all that functional
+        NOTE: I could've used `del` to remove the value but
+        that's against "functional" programming.
         Compromise? Time complextiy becomes O(n) compared to O(1) of `del`
 
         """
