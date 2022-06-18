@@ -10,6 +10,11 @@ The name is just `redis` reversed.
 - Must use **TDD**
 - Must use **functional core, imperative shell**
 
+The main rationale behind using a functional core is to:
+
+1. Write tons of unit tests, as formal provability is easy. Every function takes an input, returns a new copy of internal core. There's no mutable state.
+2. Shell easily replaceable. Right now it's a CLI, it can easily be hooked to a Flask API or Desktop GUI as the shell is just a layer which calls the core and displays the output
+
 ## Resources
 
 - [Harry Percival: Obey the Testing Goat!](https://www.obeythetestinggoat.com/pages/book.html#toc)
