@@ -48,7 +48,10 @@ class Sider:
         Compromise? Time complextiy becomes O(n) compared to O(1) of `del`
 
         """
-        return Sider.from_dict({k: v for k, v in self._store.items() if k != key})
+        if key in self._store:
+            return Sider.from_dict({k: v for k, v in self._store.items() if k != key})
+        else:
+            return self
 
     def value_count(self, value: str) -> int:
         """Returns the number of entries mapped to `value`.
