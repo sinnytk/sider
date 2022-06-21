@@ -77,3 +77,8 @@ class Sider:
         assert isinstance(old_store, dict)
 
         return cls(_store=deepcopy(old_store))
+
+    @classmethod
+    def from_sider(cls, old_sider: "Sider") -> "Sider":
+        """Factory method to create a Sider from existing instance"""
+        return cls.from_dict(old_sider._store)

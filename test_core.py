@@ -13,10 +13,23 @@ def test_sider_store_is_immutable():
         sider._store = {"2": "b", "o": "r", "2": "b"}
 
 
-def test_sider_construction_with_existing_store():
+def test_sider_construction_with_dict():
     old_store = {"2": "b", "o": "r", "2": "b"}
     assert Sider.from_dict(old_store)._store == old_store  # value is same
     assert Sider.from_dict(old_store)._store is not old_store  # reference is different.
+
+
+def test_sider_construction_with_existing_store():
+    assert Sider.from_sider(
+        Sider.from_dict({"2": "b", "o": "r", "2": "b"})
+    ) == Sider.from_dict(
+        {"2": "b", "o": "r", "2": "b"}
+    )  # value is same
+    assert Sider.from_sider(
+        Sider.from_dict({"2": "b", "o": "r", "2": "b"})
+    ) is not Sider.from_dict(
+        {"2": "b", "o": "r", "2": "b"}
+    )  # reference is different.
 
 
 def test_sider_equivalence():
